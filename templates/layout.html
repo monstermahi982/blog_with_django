@@ -1,42 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css"
+    />
     <title>Home</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <nav class="uk-navbar-container" uk-navbar>
+      <div class="uk-navbar-left">
+        <a href="" class="uk-navbar-item uk-logo">Django-Crud</a>
+      </div>
 
-    <nav class="uk-navbar-container " uk-navbar>
-
-
-        <div class="uk-navbar-left">
-            <a href="" class="uk-navbar-item uk-logo">Django-Crud</a>
-        </div>
-
-        <div class="uk-navbar-right">
-
-            <ul class="uk-navbar-nav">
-                <li class="uk-active"><a href="/">HOME</a></li>
-                <li>
-                    <a href="/crud">CRUD</a>
-                </li>
-                <li><a href="#">BLOG</a></li>
-                <li><a href="/about">ABOUT</a></li>
-            </ul>
-
-        </div>
-
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+          <li class="uk-active"><a href="/">HOME</a></li>
+          <li>
+            <a href="/crud">CRUD</a>
+          </li>
+          <li><a href="/blogs">BLOG</a></li>
+          <li><a href="/about">ABOUT</a></li>
+        </ul>
+      </div>
     </nav>
 
     {% block content %} {% endblock %}
 
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit-icons.min.js"></script>
-</body>
-
+  </body>
 </html>
