@@ -10,7 +10,6 @@ class Student(models.Model):
 
 
 class Blog(models.Model):
-    id = models.BigIntegerField(primary_key=True)
     name = models.CharField(max_length=50)
     title = models.CharField(max_length=50, null=True)
     desc = models.TextField(max_length=250)

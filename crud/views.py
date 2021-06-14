@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from crud.models import Student, Blog
+import os
 
 
 def index(request):
@@ -11,6 +12,17 @@ def about(request):
 
 
 def blog(request):
+    if request.method == 'POST':
+        blog = Blog()
+        if request.POST.get('name') != "" and request.POST.get('title') != "" and request.POST.get('desc') != "" and len(request.FILES) != 0:
+            blog.name = request.POST.get("name")
+            blog.title = request.POST.get("title")
+            blog.desc = request.POST.get("desc")
+            blog.image = request.FILES['image']
+            blog.save()
+        else:
+            print("error")
+
     blog = Blog.objects.all()
     return render(request, "blog.html", {"data": blog})
 
@@ -22,6 +34,8 @@ def blogs(request, id):
 
 def delete_blog(request, id):
     blog = Blog.objects.get(id=id)
+    if len(blog.image) > 0:
+        os.remove(blog.image.path)
     blog.delete()
     return redirect('blog')
 
