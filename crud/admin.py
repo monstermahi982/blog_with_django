@@ -6,3 +6,4 @@ from .models import *
 
 admin.site.register(Student)
 admin.site.register(Blog)
+admin.site.register(Action)

@@ -14,7 +14,7 @@
   <body>
     <nav class="uk-navbar-container" uk-navbar>
       <div class="uk-navbar-left">
-        <a href="" class="uk-navbar-item uk-logo">Django-Crud</a>
+        <a href="/" class="uk-navbar-item uk-logo">Django-Crud</a>
       </div>
 
       <div class="uk-navbar-right">
@@ -24,14 +24,112 @@
             <a href="/crud">CRUD</a>
           </li>
           <li><a href="/blogs">BLOG</a></li>
-          <li><a href="/about">ABOUT</a></li>
+          {% if request.user.is_authenticated %}
+          <li><a href="/profile">profile</a></li>
+          <li><a href="/logout">Logout</a></li>
+          {% else %}
+          <li><a type="button" uk-toggle="target: #login">LOGIN</a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>
+
+    <div id="login" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <h2 class="uk-modal-title">LOGIN</h2>
+
+        <form action="/login" method="POST">
+          {% csrf_token %}
+          <fieldset class="uk-fieldset">
+            <div class="uk-margin">
+              <input
+                class="uk-input"
+                type="email"
+                placeholder="Email"
+                name="email"
+              />
+            </div>
+            <div class="uk-margin">
+              <input
+                class="uk-input"
+                type="password"
+                placeholder="Password"
+                name="password"
+              />
+            </div>
+          </fieldset>
+          <p>not have a account :- <a uk-toggle="target: #sign">sign</a></p>
+          <p class="uk-text-right">
+            <button
+              class="uk-button uk-button-default uk-modal-close"
+              type="button"
+            >
+              Cancel
+            </button>
+            <button class="uk-button uk-button-primary" type="submit">
+              Submit
+            </button>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <div id="sign" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <h2 class="uk-modal-title">CREATE ACCOUNT</h2>
+
+        <form action="/signin" method="POST">
+          {% csrf_token %}
+          <fieldset class="uk-fieldset">
+            <div class="uk-margin">
+              <input
+                class="uk-input"
+                type="text"
+                placeholder="Name"
+                name="name"
+              />
+            </div>
+            <div class="uk-margin">
+              <input
+                class="uk-input"
+                type="email"
+                placeholder="Email"
+                name="email"
+              />
+            </div>
+            <div class="uk-margin">
+              <input
+                class="uk-input"
+                type="password"
+                placeholder="Password"
+                name="password"
+              />
+            </div>
+          </fieldset>
+          <p>
+            already have a account :- <a uk-toggle="target: #login">Login</a>
+          </p>
+          <p class="uk-text-right">
+            <button
+              class="uk-button uk-button-default uk-modal-close"
+              type="button"
+            >
+              Cancel
+            </button>
+            <button class="uk-button uk-button-primary" type="submit">
+              Submit
+            </button>
+          </p>
+        </form>
+      </div>
+    </div>
 
     {% block content %} {% endblock %}
 
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit-icons.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </body>
 </html>
