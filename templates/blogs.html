@@ -22,9 +22,12 @@
             <div class="uk-card-text">{{data.desc}}</div>
             <p class="uk-text-success uk-text-right">- {{data.date}}</p>
             <div class="uk-button-group">
-                <a href="#" class="uk-button uk-button-primary uk-button-small"><i class="far fa-thumbs-up"></i> 30</a>
-                <a href="#" class="uk-button uk-button-primary uk-button-small"><i class="far fa-thumbs-down"></i>
-                    20</a>
+                <button class="uk-button uk-button-primary uk-button-small">
+                    <i class="far fa-thumbs-up"></i> {{data.likes}}
+                </button>
+                <button class="uk-button uk-button-primary uk-button-small">
+                    <i class="far fa-thumbs-down"></i> {{data.dislikes}}
+                </button>
             </div>
         </div>
     </div>

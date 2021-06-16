@@ -1,5 +1,4 @@
 {% extends "layout.html" %} {% block content %}
-<h3>hello <strong>{{data1.first_name}}</strong> welcome to social blogs</h3>
 
 <div class="uk-container">
     <div class="uk-child-width-expand@s uk-text-center" uk-grid>
@@ -9,10 +8,6 @@
                     {% csrf_token %}
                     <fieldset class="uk-fieldset">
                         <legend class="uk-legend">ADD BLOGS</legend>
-
-                        <div class="uk-margin">
-                            <input class="uk-input" type="text" name="name" placeholder="NAME" required />
-                        </div>
                         <div class="uk-margin">
                             <input class="uk-input" type="text" name="title" placeholder="TITLE" required />
                         </div>
@@ -39,7 +34,12 @@
         <div class="uk-width-1-3@m">
             <div class="uk-card uk-card-default">
                 <div class="uk-card-media-top">
-                    <img src="http://localhost:8000/static/{{data.image}}" alt="{{data.name}}" />
+                    <div uk-lightbox>
+                        <a href="http://localhost:8000/static/{{data.image}}">
+                            <img data-src="http://localhost:8000/static/{{data.image}}" alt="{{data.name}}" uk-img>
+                        </a>
+                    </div>
+
                 </div>
                 <div class="uk-card-body">
                     <h3 class="uk-card-title uk-text-primary uk-text-uppercase">

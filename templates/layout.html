@@ -1,135 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css"
-    />
-    <title>Home</title>
-  </head>
 
-  <body>
-    <nav class="uk-navbar-container" uk-navbar>
-      <div class="uk-navbar-left">
-        <a href="/" class="uk-navbar-item uk-logo">Django-Crud</a>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta required name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css" />
+  <title>Home</title>
+</head>
 
-      <div class="uk-navbar-right">
-        <ul class="uk-navbar-nav">
-          <li class="uk-active"><a href="/">HOME</a></li>
-          <li>
-            <a href="/crud">CRUD</a>
-          </li>
-          <li><a href="/blogs">BLOG</a></li>
-          {% if request.user.is_authenticated %}
-          <li><a href="/profile">profile</a></li>
-          <li><a href="/logout">Logout</a></li>
-          {% else %}
-          <li><a type="button" uk-toggle="target: #login">LOGIN</a></li>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
-
-    <div id="login" uk-modal>
-      <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-        <h2 class="uk-modal-title">LOGIN</h2>
-
-        <form action="/login" method="POST">
-          {% csrf_token %}
-          <fieldset class="uk-fieldset">
-            <div class="uk-margin">
-              <input
-                class="uk-input"
-                type="email"
-                placeholder="Email"
-                name="email"
-              />
-            </div>
-            <div class="uk-margin">
-              <input
-                class="uk-input"
-                type="password"
-                placeholder="Password"
-                name="password"
-              />
-            </div>
-          </fieldset>
-          <p>not have a account :- <a uk-toggle="target: #sign">sign</a></p>
-          <p class="uk-text-right">
-            <button
-              class="uk-button uk-button-default uk-modal-close"
-              type="button"
-            >
-              Cancel
-            </button>
-            <button class="uk-button uk-button-primary" type="submit">
-              Submit
-            </button>
-          </p>
-        </form>
-      </div>
+<body>
+  <nav class="uk-navbar-container" uk-sticky="top: #offset" style="z-index: 980;" uk-navbar>
+    <div class="uk-navbar-left">
+      <a href="/" class="uk-navbar-item uk-logo uk-text-uppercase uk-text-primary">Social Bloger</a>
     </div>
 
-    <div id="sign" uk-modal>
-      <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-        <h2 class="uk-modal-title">CREATE ACCOUNT</h2>
-
-        <form action="/signin" method="POST">
-          {% csrf_token %}
-          <fieldset class="uk-fieldset">
-            <div class="uk-margin">
-              <input
-                class="uk-input"
-                type="text"
-                placeholder="Name"
-                name="name"
-              />
-            </div>
-            <div class="uk-margin">
-              <input
-                class="uk-input"
-                type="email"
-                placeholder="Email"
-                name="email"
-              />
-            </div>
-            <div class="uk-margin">
-              <input
-                class="uk-input"
-                type="password"
-                placeholder="Password"
-                name="password"
-              />
-            </div>
-          </fieldset>
-          <p>
-            already have a account :- <a uk-toggle="target: #login">Login</a>
-          </p>
-          <p class="uk-text-right">
-            <button
-              class="uk-button uk-button-default uk-modal-close"
-              type="button"
-            >
-              Cancel
-            </button>
-            <button class="uk-button uk-button-primary" type="submit">
-              Submit
-            </button>
-          </p>
-        </form>
-      </div>
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav">
+        <li><a class="uk-text-primary" href="/">HOME</a></li>
+        <li>
+          <a class="uk-text-primary" href="/crud">CRUD</a>
+        </li>
+        <li><a class="uk-text-primary" href="/blogs">BLOG</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a class="uk-text-primary" href="/profile">profile</a></li>
+        <li><a class="uk-text-primary" href="/logout">Logout</a></li>
+        {% else %}
+        <li><a class="uk-text-primary" type="button" uk-toggle="target: #login">LOGIN</a></li>
+        {% endif %}
+      </ul>
     </div>
+  </nav>
 
-    {% block content %} {% endblock %}
+  <div id="login" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <h2 class="uk-modal-title">LOGIN</h2>
 
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit-icons.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  </body>
+      <form action="/login" method="POST">
+        {% csrf_token %}
+        <fieldset class="uk-fieldset">
+          <div class="uk-margin">
+            <input class="uk-input" type="email" placeholder="Email" required name="email" />
+          </div>
+          <div class="uk-margin">
+            <input class="uk-input" type="password" placeholder="Password" required name="password" />
+          </div>
+        </fieldset>
+        <p>not have a account :- <a uk-toggle="target: #sign">sign</a></p>
+        <p class="uk-text-right">
+          <button class="uk-button uk-button-default uk-modal-close" type="button">
+            Cancel
+          </button>
+          <button class="uk-button uk-button-primary" type="submit">
+            Submit
+          </button>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <div id="sign" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <h2 class="uk-modal-title">CREATE ACCOUNT</h2>
+
+      <form action="/signin" method="POST">
+        {% csrf_token %}
+        <fieldset class="uk-fieldset">
+          <div class="uk-margin">
+            <input class="uk-input" type="text" placeholder="Name" required name="name" />
+          </div>
+          <div class="uk-margin">
+            <input class="uk-input" type="email" placeholder="Email" required name="email" />
+          </div>
+          <div class="uk-margin">
+            <input class="uk-input" type="password" placeholder="Password" required name="password" />
+          </div>
+        </fieldset>
+        <p>
+          already have a account :- <a uk-toggle="target: #login">Login</a>
+        </p>
+        <p class="uk-text-right">
+          <button class="uk-button uk-button-default uk-modal-close" type="button">
+            Cancel
+          </button>
+          <button class="uk-button uk-button-primary" type="submit">
+            Submit
+          </button>
+        </p>
+      </form>
+    </div>
+  </div>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <!-- <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li> -->
+    {% if message.tags == 'error' %}
+    <div class="uk-alert-danger uk-margin-top uk-margin-right" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <h5 class="uk-text-center uk-text-capitalize">{{ message }}</h5>
+    </div>
+    {% else %}
+    <div class="uk-alert-{{message.tags}} uk-margin-top uk-margin-right" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <h5 class="uk-text-center uk-text-capitalize">{{ message }}</h5>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% block content %} {% endblock %}
+
+  <footer>
+    <div class="uk-padding-small uk-margin-top uk-background-muted">
+      <h5 class="uk-text-center uk-text-normal uk-text-primary">Social-Bloger@2021</h5>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit-icons.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+
 </html>
