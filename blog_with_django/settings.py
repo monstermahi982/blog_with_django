@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '+2o^=i=wk!1ngv9d))h19+mb*arem)b3mi=lifczm(-9r%64k&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['socialbloger.herokuapp.com' , '127.0.0.1']
+ALLOWED_HOSTS = ['socialbloger.herokuapp.com' , '127.0.0.1' , 'localhost']
 
 
 # Application definition
@@ -132,4 +132,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
