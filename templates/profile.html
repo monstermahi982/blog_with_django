@@ -9,21 +9,21 @@
                     <fieldset class="uk-fieldset">
                         <legend class="uk-legend">ADD BLOGS</legend>
                         <div class="uk-margin">
-                            <input class="uk-input" type="text" name="title" placeholder="TITLE" required />
+                            <input class="uk-input" type="text" name="title" placeholder="TITLE" required />Title
                         </div>
                         <div class="uk-margin">
                             <textarea class="uk-textarea" rows="5" name="desc" placeholder="DESCRIPTION"
-                                required></textarea>
+                                required><Description/textarea>
                         </div>
                         <div class="uk-margin">
                             <div uk-form-custom>
                                 <input type="file" name="image" required />
                                 <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                                    IMAGE
+                                    Image
                                 </button>
                             </div>
                             <button class="uk-button uk-button-primary" type="submit ">
-                                SUBMIT
+                                Submit
                             </button>
                         </div>
                     </fieldset>
@@ -43,13 +43,13 @@
 
                 </div>
                 <div class="uk-card-body">
-                    <h3 class="uk-card-title uk-text-primary uk-text-uppercase">
+                    <h2 class="uk-card-title uk-text-primary uk-text-uppercase">
                         {{data.title}}
-                    </h3>
+                    </h2>
                     <div class="uk-card-text uk-text-truncate">{{data.desc}}</div>
                     <p class="uk-text-success uk-text-right">- {{data.date}}</p>
                     <div class="uk-button-group">
-                        <a href="/blogs/{{data.id}}" class="uk-button uk-button-primary uk-button-small">SHOW</a>
+                        <a href="/blogs/{{data.id}}" class="uk-button uk-button-primary uk-button-small">DISPLAY</a>
                         <a href="" class="uk-button uk-button-success uk-button-small">UPDATE</a>
                         <a href="/delete_blog/{{data.id}}" class="uk-button uk-button-danger uk-button-small">DELETE</a>
                     </div>
