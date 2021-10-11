@@ -1,33 +1,48 @@
-{% extends "layout.html" %}
-{% block content %}
+{% extends "layout.html" %} {% block content %}
 <div>
+  <div
+    class="uk-position-relative uk-visible-toggle uk-light"
+    tabindex="-1"
+    uk-slideshow="autoplay: true ; animation : fade; min-height: 200; max-height: 300; opacity:0.7"
+  >
+    <ul class="uk-slideshow-items">
+      <li>
+        <img
+          src=" https://socialbloger.herokuapp.com/static/photo1.jpeg "
+          alt=""
+          uk-cover
+          height="400px"
+        />
+      </li>
+      <li>
+        <img
+          src="https://socialbloger.herokuapp.com/static/photo3.jpeg"
+          alt=""
+          uk-cover
+        />
+      </li>
+      <li>
+        <img
+          src="https://socialbloger.herokuapp.com/static/photo2.jpeg"
+          alt=""
+          uk-cover
+        />
+      </li>
+    </ul>
 
-
-
-
-
-    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
-        uk-slideshow="autoplay: true ; animation : fade; min-height: 200; max-height: 300; opacity:0.7">
-
-        <ul class="uk-slideshow-items">
-            <li>
-                <img src=" https://socialbloger.herokuapp.com/static/photo1.jpeg " alt="" uk-cover height="400px">
-            </li>
-            <li>
-                <img src="https://socialbloger.herokuapp.com/static/photo3.jpeg" alt="" uk-cover>
-            </li>
-            <li>
-                <img src="https://socialbloger.herokuapp.com/static/photo2.jpeg" alt="" uk-cover>
-            </li>
-        </ul>
-
-        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
-            uk-slideshow-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
-            uk-slideshow-item="next"></a>
-
-    </div>
-
+    <a
+      class="uk-position-center-left uk-position-small uk-hidden-hover"
+      href="#"
+      uk-slidenav-previous
+      uk-slideshow-item="previous"
+    ></a>
+    <a
+      class="uk-position-center-right uk-position-small uk-hidden-hover"
+      href="#"
+      uk-slidenav-next
+      uk-slideshow-item="next"
+    ></a>
+  </div>
 </div>
 
 {% endblock content %}

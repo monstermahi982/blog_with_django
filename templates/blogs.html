@@ -2,35 +2,40 @@
 <br />
 
 <div class="uk-container">
-    <div class="uk-card uk-card-default">
-        <h3 class="
+  <div class="uk-card uk-card-default">
+    <h3
+      class="
         uk-text-success
         uk-text-uppercase
         uk-text-large
         uk-text-bold
         uk-text-center
-      ">
-            - {{data.name}}
-        </h3>
-        <div class="uk-card-media-top">
-            <img src="https://socialbloger.herokuapp.com/static/{{data.image}}" alt="{{data.name}}" />
-        </div>
-        <div class="uk-card-body">
-            <h3 class="uk-card-title uk-text-primary uk-text-uppercase">
-                {{data.title}}
-            </h3>
-            <div class="uk-card-text">{{data.desc}}</div>
-            <p class="uk-text-success uk-text-right">- {{data.date}}</p>
-            <div class="uk-button-group">
-                <button class="uk-button uk-button-primary uk-button-small">
-                    <i class="far fa-thumbs-up"></i> {{data.likes}}
-                </button>
-                <button class="uk-button uk-button-primary uk-button-small">
-                    <i class="far fa-thumbs-down"></i> {{data.dislikes}}
-                </button>
-            </div>
-        </div>
+      "
+    >
+      - {{data.name}}
+    </h3>
+    <div class="uk-card-media-top">
+      <img
+        src="https://socialbloger.herokuapp.com/static/{{data.image}}"
+        alt="{{data.name}}"
+      />
     </div>
+    <div class="uk-card-body">
+      <h3 class="uk-card-title uk-text-primary uk-text-uppercase">
+        {{data.title}}
+      </h3>
+      <div class="uk-card-text">{{data.desc}}</div>
+      <p class="uk-text-success uk-text-right">- {{data.date}}</p>
+      <div class="uk-button-group">
+        <button class="uk-button uk-button-primary uk-button-small">
+          <i class="far fa-thumbs-up"></i> {{data.likes}}
+        </button>
+        <button class="uk-button uk-button-primary uk-button-small">
+          <i class="far fa-thumbs-down"></i> {{data.dislikes}}
+        </button>
+      </div>
+    </div>
+  </div>
 
-    {% endblock content %}
+  {% endblock content %}
 </div>

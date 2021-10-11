@@ -1,85 +1,105 @@
-{% extends "layout.html" %}
-{% block content %}
+{% extends "layout.html" %} {% block content %}
 
 <div class="uk-container">
-    <div class="uk-child-width-expand@s uk-text-center" uk-grid>
-        <div class="uk-width-1-3@m">
-            <div class="uk-card uk-card-default uk-card-body">
+  <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+    <div class="uk-width-1-3@m">
+      <div class="uk-card uk-card-default uk-card-body">
+        <form action="crud" method="POST">
+          {% csrf_token %}
+          <fieldset class="uk-fieldset">
+            <legend class="uk-legend uk-text-primary">ADD STUDENT</legend>
 
-                <form action="crud" method="POST">
-                    {% csrf_token %}
-                    <fieldset class="uk-fieldset">
-
-                        <legend class="uk-legend uk-text-primary">ADD STUDENT</legend>
-
-                        <div class="uk-margin">
-                            <input class="uk-input" type="text" placeholder="NAME" name="name">
-                        </div>
-
-                        <div class="uk-margin">
-                            <input class="uk-input" type="number" placeholder="AGE" name="age">
-                        </div>
-
-                        <div class="uk-margin">
-                            <select class="uk-select" name="gender">
-                                <option>SELECT</option>
-                                <option>MALE</option>
-                                <option>FEMALE</option>
-                                <option>OTHER</option>
-                            </select>
-                        </div>
-
-                        <div class="uk-margin">
-                            <textarea class="uk-textarea" rows="3" name="message" placeholder="MESSAGE"></textarea>
-                        </div>
-
-                    </fieldset>
-                    <button class="uk-button uk-button-primary uk-width-1-1" type="submit">Button</button>
-                </form>
-
-
-            </div>
-        </div>
-        <div class="uk-width-2-3@m">
-            <div class="uk-card uk-card-default uk-card-body">
-                <div class="uk-overflow-auto">
-                    <legend class="uk-legend uk-text-primary">STUDENT INFORAMTIONS</legend>
-                    <table class="uk-table uk-table-justify uk-table-divider">
-                        <thead>
-                            <tr>
-                                <th class="uk-width-small">NO.</th>
-                                <th>NAME</th>
-                                <th>AGE</th>
-                                <th>GENDER</th>
-                                <th>EDIT</th>
-                                <th>DELETE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for data in datas %}
-                            <tr>
-                                <td>{{ data.id }}</td>
-                                <td>{{ data.name }}</td>
-                                <td>{{ data.age }}</td>
-                                <td>{{ data.gender }}</td>
-                                <td><a href="updatestud/{{data.id}}"
-                                        class="uk-button uk-button-primary uk-border-circle" uk-icon="icon: pencil"></a>
-                                </td>
-                                <td><a href="deletestud/{{data.id}}" class="uk-button uk-button-danger uk-border-circle"
-                                        uk-icon="icon: trash"></a>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-
-                </div>
+            <div class="uk-margin">
+              <input
+                class="uk-input"
+                type="text"
+                placeholder="NAME"
+                name="name"
+              />
             </div>
 
-        </div>
+            <div class="uk-margin">
+              <input
+                class="uk-input"
+                type="number"
+                placeholder="AGE"
+                name="age"
+              />
+            </div>
+
+            <div class="uk-margin">
+              <select class="uk-select" name="gender">
+                <option>SELECT</option>
+                <option>MALE</option>
+                <option>FEMALE</option>
+                <option>OTHER</option>
+              </select>
+            </div>
+
+            <div class="uk-margin">
+              <textarea
+                class="uk-textarea"
+                rows="3"
+                name="message"
+                placeholder="MESSAGE"
+              ></textarea>
+            </div>
+          </fieldset>
+          <button
+            class="uk-button uk-button-primary uk-width-1-1"
+            type="submit"
+          >
+            Button
+          </button>
+        </form>
+      </div>
     </div>
+    <div class="uk-width-2-3@m">
+      <div class="uk-card uk-card-default uk-card-body">
+        <div class="uk-overflow-auto">
+          <legend class="uk-legend uk-text-primary">
+            STUDENT INFORAMTIONS
+          </legend>
+          <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+              <tr>
+                <th class="uk-width-small">NO.</th>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>GENDER</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for data in datas %}
+              <tr>
+                <td>{{ data.id }}</td>
+                <td>{{ data.name }}</td>
+                <td>{{ data.age }}</td>
+                <td>{{ data.gender }}</td>
+                <td>
+                  <a
+                    href="updatestud/{{data.id}}"
+                    class="uk-button uk-button-primary uk-border-circle"
+                    uk-icon="icon: pencil"
+                  ></a>
+                </td>
+                <td>
+                  <a
+                    href="deletestud/{{data.id}}"
+                    class="uk-button uk-button-danger uk-border-circle"
+                    uk-icon="icon: trash"
+                  ></a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-
-
-    {% endblock content %}
+  {% endblock content %}
+</div>

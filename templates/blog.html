@@ -1,51 +1,64 @@
 {% extends "layout.html" %} {% block content %}
-<br>
+<br />
 
 <div class="uk-container">
-    <div class="uk-child-width-expand@s uk-text-center" uk-grid
-        uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 500; repeat: true">
-        {% for data in data %}
-        <div class="uk-width-1-3@m">
-            <div class="uk-card uk-card-default">
-                <div class="uk-card-media-top">
-                    <div uk-lightbox>
-                        <a href="https://socialbloger.herokuapp.com/static/{{data.image}}"
-                            data-caption="{{data.title}}">
-                            <img src="https://socialbloger.herokuapp.com/static/{{data.image}}" alt="{{data.name}}">
-                        </a>
-                    </div>
-                </div>
-                <div class="uk-card-body">
-                    <h3 class="uk-card-title uk-text-primary uk-text-uppercase">
-                        {{data.title}}
-                    </h3>
-                    <div class="uk-card-text uk-text-truncate">
-                        {{data.desc}}
-                    </div>
-                    <p class="uk-text-success uk-text-right">- {{data.date}}</p>
-                    <div class="uk-button-group">
-                        <form action="/likes" method="post">
-                            {% csrf_token %}
-                            <input type="text" name="blog_id" value="{{data.id}}" hidden>
-                            <button type="submit" class="uk-button uk-button-primary uk-button-small"><i
-                                    class="far fa-thumbs-up"></i>
-                                {{data.likes}}</button>
-                        </form>
-                        <a href="/blogs/{{data.id}}" class="uk-button uk-button-danger uk-button-small">SHOW</a>
-
-                        <form action="/dislikes" method="post">
-                            {% csrf_token %}
-                            <input type="text" name="blog_id" value="{{data.id}}" hidden>
-                            <button class="uk-button uk-button-primary uk-button-small"><i
-                                    class="far fa-thumbs-down"></i> {{data.dislikes}}</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+  <div
+    class="uk-child-width-expand@s uk-text-center"
+    uk-grid
+    uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 500; repeat: true"
+  >
+    {% for data in data %}
+    <div class="uk-width-1-3@m">
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-media-top">
+          <div uk-lightbox>
+            <a
+              href="https://socialbloger.herokuapp.com/static/{{data.image}}"
+              data-caption="{{data.title}}"
+            >
+              <img
+                src="https://socialbloger.herokuapp.com/static/{{data.image}}"
+                alt="{{data.name}}"
+              />
+            </a>
+          </div>
         </div>
-        {% endfor %}
+        <div class="uk-card-body">
+          <h3 class="uk-card-title uk-text-primary uk-text-uppercase">
+            {{data.title}}
+          </h3>
+          <div class="uk-card-text uk-text-truncate">{{data.desc}}</div>
+          <p class="uk-text-success uk-text-right">- {{data.date}}</p>
+          <div class="uk-button-group">
+            <form action="/likes" method="post">
+              {% csrf_token %}
+              <input type="text" name="blog_id" value="{{data.id}}" hidden />
+              <button
+                type="submit"
+                class="uk-button uk-button-primary uk-button-small"
+              >
+                <i class="far fa-thumbs-up"></i> {{data.likes}}
+              </button>
+            </form>
+            <a
+              href="/blogs/{{data.id}}"
+              class="uk-button uk-button-danger uk-button-small"
+              >SHOW</a
+            >
 
+            <form action="/dislikes" method="post">
+              {% csrf_token %}
+              <input type="text" name="blog_id" value="{{data.id}}" hidden />
+              <button class="uk-button uk-button-primary uk-button-small">
+                <i class="far fa-thumbs-down"></i> {{data.dislikes}}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+    {% endfor %}
+  </div>
 
-
-    {% endblock content %}
+  {% endblock content %}
+</div>

@@ -1,62 +1,89 @@
 {% extends "layout.html" %} {% block content %}
 
 <div class="uk-container">
-    <div class="uk-child-width-expand@s uk-text-center" uk-grid>
-        <div class="uk-width-1-3@m">
-            <div class="uk-card uk-card-default uk-card-body">
-                <form action="/profile" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <fieldset class="uk-fieldset">
-                        <legend class="uk-legend">ADD BLOGS</legend>
-                        <div class="uk-margin">
-                            <input class="uk-input" type="text" name="title" placeholder="TITLE" required />
-                        </div>
-                        <div class="uk-margin">
-                            <textarea class="uk-textarea" rows="5" name="desc" placeholder="DESCRIPTION"
-                                required></textarea>
-                        </div>
-                        <div class="uk-margin">
-                            <div uk-form-custom>
-                                <input type="file" name="image" required />
-                                <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                                    IMAGE
-                                </button>
-                            </div>
-                            <button class="uk-button uk-button-primary" type="submit ">
-                                SUBMIT
-                            </button>
-                        </div>
-                    </fieldset>
-                </form>
+  <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+    <div class="uk-width-1-3@m">
+      <div class="uk-card uk-card-default uk-card-body">
+        <form action="/profile" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="uk-fieldset">
+            <legend class="uk-legend">ADD BLOGS</legend>
+            <div class="uk-margin">
+              <input
+                class="uk-input"
+                type="text"
+                name="title"
+                placeholder="TITLE"
+                required
+              />
             </div>
-        </div>
-        {% for data in data %}
-        <div class="uk-width-1-3@m">
-            <div class="uk-card uk-card-default">
-                <div class="uk-card-media-top">
-                    <div uk-lightbox>
-                        <a href="https://socialbloger.herokuapp.com/static/{{data.image}}">
-                            <img data-src="https://socialbloger.herokuapp.com/static/{{data.image}}" alt="{{data.name}}"
-                                uk-img>
-                        </a>
-                    </div>
-
-                </div>
-                <div class="uk-card-body">
-                    <h3 class="uk-card-title uk-text-primary uk-text-uppercase">
-                        {{data.title}}
-                    </h3>
-                    <div class="uk-card-text uk-text-truncate">{{data.desc}}</div>
-                    <p class="uk-text-success uk-text-right">- {{data.date}}</p>
-                    <div class="uk-button-group">
-                        <a href="/blogs/{{data.id}}" class="uk-button uk-button-primary uk-button-small">SHOW</a>
-                        <a href="" class="uk-button uk-button-success uk-button-small">UPDATE</a>
-                        <a href="/delete_blog/{{data.id}}" class="uk-button uk-button-danger uk-button-small">DELETE</a>
-                    </div>
-                </div>
+            <div class="uk-margin">
+              <textarea
+                class="uk-textarea"
+                rows="5"
+                name="desc"
+                placeholder="DESCRIPTION"
+                required
+              ></textarea>
             </div>
-        </div>
-        {% endfor %}
+            <div class="uk-margin">
+              <div uk-form-custom>
+                <input type="file" name="image" required />
+                <button
+                  class="uk-button uk-button-default"
+                  type="button"
+                  tabindex="-1"
+                >
+                  IMAGE
+                </button>
+              </div>
+              <button class="uk-button uk-button-primary" type="submit ">
+                SUBMIT
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
     </div>
-    {% endblock content %}
+    {% for data in data %}
+    <div class="uk-width-1-3@m">
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-media-top">
+          <div uk-lightbox>
+            <a href="https://socialbloger.herokuapp.com/static/{{data.image}}">
+              <img
+                data-src="https://socialbloger.herokuapp.com/static/{{data.image}}"
+                alt="{{data.name}}"
+                uk-img
+              />
+            </a>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <h3 class="uk-card-title uk-text-primary uk-text-uppercase">
+            {{data.title}}
+          </h3>
+          <div class="uk-card-text uk-text-truncate">{{data.desc}}</div>
+          <p class="uk-text-success uk-text-right">- {{data.date}}</p>
+          <div class="uk-button-group">
+            <a
+              href="/blogs/{{data.id}}"
+              class="uk-button uk-button-primary uk-button-small"
+              >SHOW</a
+            >
+            <a href="" class="uk-button uk-button-success uk-button-small"
+              >UPDATE</a
+            >
+            <a
+              href="/delete_blog/{{data.id}}"
+              class="uk-button uk-button-danger uk-button-small"
+              >DELETE</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endblock content %}
 </div>
