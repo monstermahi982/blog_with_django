@@ -14,7 +14,6 @@
     <div class="uk-navbar-left">
       <a href="/" class="uk-navbar-item uk-logo uk-text-uppercase uk-text-primary">Social Bloger</a>
     </div>
-
     <div class="uk-navbar-right">
       <ul class="uk-navbar-nav">
         <li><a class="uk-text-primary" href="/">HOME</a></li>
@@ -23,7 +22,7 @@
         </li>
         <li><a class="uk-text-primary" href="/blogs">BLOG</a></li>
         {% if request.user.is_authenticated %}
-        <li><a class="uk-text-primary" href="/profile">profile</a></li>
+        <li><a class="uk-text-primary" href="/profile">Profile</a></li>
         <li><a class="uk-text-primary" href="/logout">Logout</a></li>
         {% else %}
         <li><a class="uk-text-primary" type="button" uk-toggle="target: #login">LOGIN</a></li>
@@ -36,7 +35,6 @@
     <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
       <button class="uk-modal-close-default" type="button" uk-close></button>
       <h2 class="uk-modal-title">LOGIN</h2>
-
       <form action="/login" method="POST">
         {% csrf_token %}
         <fieldset class="uk-fieldset">
@@ -47,7 +45,7 @@
             <input class="uk-input" type="password" placeholder="Password" required name="password" />
           </div>
         </fieldset>
-        <p>not have a account :- <a uk-toggle="target: #sign">sign</a></p>
+        <p>Not have a account :- <a uk-toggle="target: #sign">sign</a></p>
         <p class="uk-text-right">
           <button class="uk-button uk-button-default uk-modal-close" type="button">
             Cancel
